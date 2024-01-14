@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BookMarkView: View {
     @EnvironmentObject private var cardsData: Cards
-    @State private var paths: [Card] = []
     var gridItems = [GridItem(), GridItem()]
     
     var body: some View {
@@ -27,7 +26,7 @@ struct BookMarkView: View {
                     ForEach(cardsData.cards.indices, id: \.self) { cardIndex in
                         if cardsData.cards[cardIndex].bookMarked {
                             NavigationLink {
-                                DetailCardView(index: cardIndex)
+                                DetailCardView(cardIndex: cardIndex)
                             } label: {
                                 CardView(image: cardsData.cards[cardIndex].image)
                             }
@@ -36,9 +35,6 @@ struct BookMarkView: View {
                 }
             }
         }
-        .onDisappear(perform: {
-            
-        })
     }
 }
 

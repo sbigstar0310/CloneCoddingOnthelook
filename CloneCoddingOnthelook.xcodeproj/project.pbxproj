@@ -21,6 +21,8 @@
 		9E39C7D42B3B1917008B795F /* Cloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D32B3B1917008B795F /* Cloth.swift */; };
 		9E39C7D62B3B1AB8008B795F /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D52B3B1AB8008B795F /* ClothView.swift */; };
 		9E39C88D2B482EA8008B795F /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C88C2B482EA8008B795F /* FilterDetailView.swift */; };
+		9E946E7A2B4FD2E8006752D9 /* DetailClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E946E792B4FD2E8006752D9 /* DetailClothView.swift */; };
+		9E946E7C2B53D5ED006752D9 /* testBookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E946E7B2B53D5ED006752D9 /* testBookMarkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,9 @@
 		9E39C7D32B3B1917008B795F /* Cloth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloth.swift; sourceTree = "<group>"; };
 		9E39C7D52B3B1AB8008B795F /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
 		9E39C88C2B482EA8008B795F /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
+		9E946E792B4FD2E8006752D9 /* DetailClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClothView.swift; sourceTree = "<group>"; };
+		9E946E7B2B53D5ED006752D9 /* testBookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testBookMarkView.swift; sourceTree = "<group>"; };
+		9ED9375D2B4A7764007C51E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +81,9 @@
 				9E39C7CF2B3A94F1008B795F /* Model */,
 				9E39C7D02B3A9857008B795F /* View */,
 				9E39C8892B482CD1008B795F /* View Model */,
-				9E39C7B72B37F64D008B795F /* Assets.xcassets */,
 				9E39C7B92B37F64D008B795F /* Preview Content */,
+				9E39C7B72B37F64D008B795F /* Assets.xcassets */,
+				9ED9375D2B4A7764007C51E6 /* Info.plist */,
 			);
 			path = CloneCoddingOnthelook;
 			sourceTree = "<group>";
@@ -106,10 +112,12 @@
 				9E39C7C92B3820CD008B795F /* CardView.swift */,
 				9E39C7C12B37F668008B795F /* DetailCardView.swift */,
 				9E39C7D52B3B1AB8008B795F /* ClothView.swift */,
+				9E946E792B4FD2E8006752D9 /* DetailClothView.swift */,
 				9E39C7C32B381B86008B795F /* HomeView.swift */,
 				9E39C88C2B482EA8008B795F /* FilterDetailView.swift */,
 				9E39C7C52B381FB6008B795F /* BookMarkView.swift */,
 				9E39C7C72B381FC9008B795F /* MyProfileView.swift */,
+				9E946E7B2B53D5ED006752D9 /* testBookMarkView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,7 +199,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E946E7A2B4FD2E8006752D9 /* DetailClothView.swift in Sources */,
 				9E39C88D2B482EA8008B795F /* FilterDetailView.swift in Sources */,
+				9E946E7C2B53D5ED006752D9 /* testBookMarkView.swift in Sources */,
 				9E39C7D62B3B1AB8008B795F /* ClothView.swift in Sources */,
 				9E39C7CA2B3820CD008B795F /* CardView.swift in Sources */,
 				9E39C7D22B3B18A3008B795F /* Card.swift in Sources */,
@@ -339,9 +349,9 @@
 				DEVELOPMENT_TEAM = DUJ2KB7PM5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CloneCoddingOnthelook/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
@@ -369,9 +379,9 @@
 				DEVELOPMENT_TEAM = DUJ2KB7PM5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CloneCoddingOnthelook/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.1;

@@ -14,4 +14,6 @@ struct Cloth: Identifiable, Hashable {
     var price: String
     var image: String
     var size: String = "FREE"
+    var url: String = "https://www.musinsa.com/app/"
+    var bookMarked: Bool = false
 }

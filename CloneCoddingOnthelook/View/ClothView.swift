@@ -31,8 +31,6 @@ struct ClothView: View {
             }
             
             Spacer()
-            
-            Image(systemName: "bookmark")
         }
         .frame(width: 350, height: 70)
         .background(Color(.systemGray6))

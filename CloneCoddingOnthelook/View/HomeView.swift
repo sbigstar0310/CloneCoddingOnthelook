@@ -86,7 +86,7 @@ struct HomeView: View {
                     ForEach(cardsData.cards.indices, id: \.self) { cardIndex in
                         if match(card: cardsData.cards[cardIndex]) {
                             NavigationLink {
-                                DetailCardView(index: cardIndex)
+                                DetailCardView(cardIndex: cardIndex)
                             } label: {
                                 CardView(image: cardsData.cards[cardIndex].image)
                             }

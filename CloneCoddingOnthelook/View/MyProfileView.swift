@@ -24,8 +24,8 @@ struct MyProfileView: View {
             HStack {
                 Image(profile.image)
                     .resizable()
-                    .frame(width: 50, height: 50)
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(0.8, contentMode: .fill)
+                    .frame(width: 80, height: 80)
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                 
                 VStack(alignment: .leading) {
