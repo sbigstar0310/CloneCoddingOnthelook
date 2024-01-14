@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SafariServices
 
 struct DetailClothView: View {
     @EnvironmentObject private var cardsData: Cards
@@ -71,7 +72,7 @@ struct BottomBarView: View {
     var body: some View {
         VStack {
             NavigationLink {
-                Text("웹 사이트 화면")
+                SafariView(url: URL(string: cloth.url)!)
             } label: {
                 ZStack {
                     Rectangle()
@@ -92,6 +93,20 @@ struct BottomBarView: View {
                 .fontWeight(.ultraLight)
         }
     }
+}
+
+struct SafariView: UIViewControllerRepresentable {
+
+    let url: URL
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
+        return SFSafariViewController(url: url)
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
+
+    }
+
 }
 
 #Preview {
