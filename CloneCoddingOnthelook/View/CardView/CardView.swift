@@ -13,9 +13,10 @@ struct CardView: View {
     var body: some View {
         Image(image)
             .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 195, height: 240)
-            .clipped()
+            .aspectRatio(0.8, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+//            .aspectRatio(contentMode: .fit)
+//            .frame(width: 195, height: 240)
+            .clipShape(Rectangle())
     }
 }
 

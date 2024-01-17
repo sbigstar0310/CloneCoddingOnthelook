@@ -7,28 +7,20 @@
 
 import SwiftUI
 
-struct BookMarkView: View {
-    @EnvironmentObject private var cardsData: Cards
+struct BookMarkStyleView: View {
+    @EnvironmentObject private var dataModel: DataModel
     var gridItems = [GridItem(), GridItem()]
     
     var body: some View {
         NavigationStack {
-            HStack {
-                Text("북마크")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Spacer()
-            }
-            .padding()
-            
             ScrollView {
                 LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
-                    ForEach(cardsData.cards.indices, id: \.self) { cardIndex in
-                        if cardsData.cards[cardIndex].bookMarked {
+                    ForEach(dataModel.cards.indices, id: \.self) { cardIndex in
+                        if dataModel.cards[cardIndex].bookMarked {
                             NavigationLink {
                                 DetailCardView(cardIndex: cardIndex)
                             } label: {
-                                CardView(image: cardsData.cards[cardIndex].image)
+                                CardView(image: dataModel.cards[cardIndex].image)
                             }
                         }
                     }
@@ -39,6 +31,6 @@ struct BookMarkView: View {
 }
 
 #Preview {
-    BookMarkView()
-        .environmentObject(Cards())
+    BookMarkStyleView()
+        .environmentObject(DataModel())
 }

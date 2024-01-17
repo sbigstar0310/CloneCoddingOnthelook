@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct DetailCardView: View {
-    @EnvironmentObject private var cardsData: Cards
+    @EnvironmentObject private var dataModel: DataModel
     var cardIndex: Int
     
     var body: some View {
-        let card = cardsData.cards[cardIndex]
+        let card = dataModel.cards[cardIndex]
         let profile = card.profile
         
         NavigationStack {
@@ -38,8 +38,10 @@ struct DetailCardView: View {
                     
                     Spacer()
                     
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        Text("팔로잉")
+                    Button(action: {
+                        dataModel.cards[cardIndex].profile.isFollowing.toggle()
+                    }, label: {
+                        dataModel.cards[cardIndex].profile.isFollowing ? Text("팔로우 취소") : Text("팔로잉")
                     })
                     .buttonStyle(.bordered)
                 }
@@ -52,12 +54,12 @@ struct DetailCardView: View {
                 
                 HStack {
                     Button(action: {
-                        cardsData.cards[cardIndex].liked.toggle()
+                        dataModel.cards[cardIndex].liked.toggle()
                     }, label: {
-                        cardsData.cards[cardIndex].liked ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                        dataModel.cards[cardIndex].liked ? Image(systemName: "heart.fill") : Image(systemName: "heart")
                     })
-                    .symbolEffect(.bounce, value: cardsData.cards[cardIndex].liked)
-                    .foregroundStyle(cardsData.cards[cardIndex].liked ? .red : Color("DarkmodeSafeBlack"))
+                    .symbolEffect(.bounce, value: dataModel.cards[cardIndex].liked)
+                    .foregroundStyle(dataModel.cards[cardIndex].liked ? .red : Color("DarkmodeSafeBlack"))
                     
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                         Image(systemName: "text.bubble")
@@ -67,12 +69,12 @@ struct DetailCardView: View {
                     })
                     Spacer()
                     Button(action: {
-                        cardsData.cards[cardIndex].bookMarked.toggle()
+                        dataModel.cards[cardIndex].bookMarked.toggle()
                     }, label: {
-                        cardsData.cards[cardIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
+                        dataModel.cards[cardIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
                     })
-                    .symbolEffect(.bounce, value: cardsData.cards[cardIndex].bookMarked)
-                    .foregroundStyle(cardsData.cards[cardIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
+                    .symbolEffect(.bounce, value: dataModel.cards[cardIndex].bookMarked)
+                    .foregroundStyle(dataModel.cards[cardIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
                 }
                 .foregroundStyle(Color("DarkmodeSafeBlack"))
                 .font(.title2)
@@ -102,25 +104,25 @@ struct DetailCardView: View {
                 .fontWeight(.ultraLight)
                 .padding()
                 
-                ForEach(cardsData.cards[cardIndex].cloths.indices) {clothIndex in
+                ForEach(dataModel.cards[cardIndex].cloths.indices) {clothIndex in
                     HStack {
                         NavigationLink {
                             DetailClothView(cardIndex: cardIndex, clothIndex: clothIndex)
                         } label: {
-                            ClothView(cloth: cardsData.cards[cardIndex].cloths[clothIndex])
+                            ClothView(cloth: dataModel.cards[cardIndex].cloths[clothIndex])
                         }
                         .tint(.darkmodeSafeBlack)
                         
                         Button(action: {
-                            cardsData.cards[cardIndex].cloths[clothIndex].bookMarked.toggle()
+                            dataModel.cards[cardIndex].cloths[clothIndex].bookMarked.toggle()
                         }, label: {
-                            cardsData.cards[cardIndex].cloths[clothIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
+                            dataModel.cards[cardIndex].cloths[clothIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
                         })
-                        .symbolEffect(.bounce, value: cardsData.cards[cardIndex].cloths[clothIndex].bookMarked)
-                        .foregroundStyle(cardsData.cards[cardIndex].cloths[clothIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
+                        .symbolEffect(.bounce, value: dataModel.cards[cardIndex].cloths[clothIndex].bookMarked)
+                        .foregroundStyle(dataModel.cards[cardIndex].cloths[clothIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
                     }
                 }
-                .environmentObject(cardsData)
+                .environmentObject(dataModel)
             }
         }
     }
@@ -128,5 +130,5 @@ struct DetailCardView: View {
 
 #Preview {
     DetailCardView(cardIndex: 0)
-        .environmentObject(Cards())
+        .environmentObject(DataModel())
 }

@@ -9,12 +9,12 @@ import SwiftUI
 import SafariServices
 
 struct DetailClothView: View {
-    @EnvironmentObject private var cardsData: Cards
+    @EnvironmentObject private var dataModel: DataModel
     var cardIndex: Int
     var clothIndex: Int
     
     var body: some View {
-        let cloth = cardsData.cards[cardIndex].cloths[clothIndex]
+        let cloth = dataModel.cards[cardIndex].cloths[clothIndex]
         
         ScrollView {
             LazyVStack(pinnedViews: [.sectionFooters]) {
@@ -35,12 +35,12 @@ struct DetailClothView: View {
                         })
                         
                         Button(action: {
-                            cardsData.cards[cardIndex].cloths[clothIndex].bookMarked.toggle()
+                            dataModel.cards[cardIndex].cloths[clothIndex].bookMarked.toggle()
                         }, label: {
-                            cardsData.cards[cardIndex].cloths[clothIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
+                            dataModel.cards[cardIndex].cloths[clothIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
                         })
-                        .symbolEffect(.bounce, value: cardsData.cards[cardIndex].cloths[clothIndex].bookMarked)
-                        .foregroundStyle(cardsData.cards[cardIndex].cloths[clothIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
+                        .symbolEffect(.bounce, value: dataModel.cards[cardIndex].cloths[clothIndex].bookMarked)
+                        .foregroundStyle(dataModel.cards[cardIndex].cloths[clothIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
                     }
                     .fontDesign(.rounded)
                     .font(.headline)
@@ -111,5 +111,5 @@ struct SafariView: UIViewControllerRepresentable {
 
 #Preview {
     DetailClothView(cardIndex: 0, clothIndex: 0)
-        .environmentObject(Cards())
+        .environmentObject(DataModel())
 }

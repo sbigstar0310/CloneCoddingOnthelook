@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct CloneCoddingOnthelookApp: App {
-    @StateObject private var cards = Cards()
+    @StateObject private var dataModel = DataModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(cards)
+                .environmentObject(dataModel)
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var cardsData: Cards
+    @EnvironmentObject private var dataModel: DataModel
     @State private var toggleMale = false
     @State private var toggleFemale = false
     @State private var heightLowerBound: Double = 145
@@ -83,16 +83,16 @@ struct HomeView: View {
             
             ScrollView {
                 LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
-                    ForEach(cardsData.cards.indices, id: \.self) { cardIndex in
-                        if match(card: cardsData.cards[cardIndex]) {
+                    ForEach(dataModel.cards.indices, id: \.self) { cardIndex in
+                        if match(card: dataModel.cards[cardIndex]) {
                             NavigationLink {
                                 DetailCardView(cardIndex: cardIndex)
                             } label: {
-                                CardView(image: cardsData.cards[cardIndex].image)
+                                CardView(image: dataModel.cards[cardIndex].image)
                             }
                         }
                     }
-                    .environmentObject(cardsData)
+                    .environmentObject(dataModel)
                 }
             }
         }
@@ -102,5 +102,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(Cards())
+        .environmentObject(DataModel())
 }
