@@ -10,7 +10,7 @@ import SwiftUI
 struct MyProfileView: View {
     var profile: Profile
     var gridItems = [GridItem(), GridItem()]
-    @EnvironmentObject private var dataModel: DataModel
+    @EnvironmentObject private var dataModel: TestDataModel
     
     var body: some View {
         NavigationStack {
@@ -52,12 +52,12 @@ struct MyProfileView: View {
                     
                 ScrollView {
                     LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
-                        ForEach(dataModel.cards.indices, id: \.self) { cardIndex in
-                            if dataModel.cards[cardIndex].profile.name == profile.name {
+                        ForEach(dataModel.cards) { card in
+                            if dataModel.getProfile(withId: card.profileId)!.id == profile.id {
                                 NavigationLink {
-                                    DetailCardView(cardIndex: cardIndex)
+                                    DetailCardView(cardId: card.id)
                                 } label: {
-                                    CardView(image: dataModel.cards[cardIndex].image)
+                                    CardView(image: card.image)
                                 }
                             }
                         }
@@ -71,5 +71,5 @@ struct MyProfileView: View {
 
 #Preview {
     MyProfileView(profile: testProfiles[0])
-        .environmentObject(DataModel())
+        .environmentObject(TestDataModel())
 }

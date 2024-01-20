@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DetailCardView: View {
-    @EnvironmentObject private var dataModel: DataModel
-    var cardIndex: Int
+    @EnvironmentObject private var dataModel: TestDataModel
+    var cardId: String
     
     var body: some View {
-        let card = dataModel.cards[cardIndex]
-        let profile = card.profile
+        let card: Card = dataModel.getCard(withId: cardId)!
+        let profile = dataModel.getProfile(withId: card.profileId)!
         
         NavigationStack {
             ScrollView {
@@ -39,9 +39,9 @@ struct DetailCardView: View {
                     Spacer()
                     
                     Button(action: {
-                        dataModel.cards[cardIndex].profile.isFollowing.toggle()
+                        dataModel.getProfile(withId: profile.id)!.isFollowing ? dataModel.updateProfile(withId: profile.id, newIsFollowing: false) :  dataModel.updateProfile(withId: profile.id, newIsFollowing: true)
                     }, label: {
-                        dataModel.cards[cardIndex].profile.isFollowing ? Text("팔로우 취소") : Text("팔로잉")
+                        dataModel.getProfile(withId: profile.id)!.isFollowing ? Text("팔로우 취소") : Text("팔로잉")
                     })
                     .buttonStyle(.bordered)
                 }
@@ -54,12 +54,12 @@ struct DetailCardView: View {
                 
                 HStack {
                     Button(action: {
-                        dataModel.cards[cardIndex].liked.toggle()
+                        dataModel.getCard(withId: card.id)!.liked ? dataModel.updateCard(withId: card.id, newLiked: false) :  dataModel.updateCard(withId: card.id, newLiked: true)
                     }, label: {
-                        dataModel.cards[cardIndex].liked ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                        dataModel.getCard(withId: card.id)!.liked ? Image(systemName: "heart.fill") : Image(systemName: "heart")
                     })
-                    .symbolEffect(.bounce, value: dataModel.cards[cardIndex].liked)
-                    .foregroundStyle(dataModel.cards[cardIndex].liked ? .red : Color("DarkmodeSafeBlack"))
+                    .symbolEffect(.bounce, value: dataModel.getCard(withId: card.id)!.liked)
+                    .foregroundStyle(dataModel.getCard(withId: card.id)!.liked ? .red : Color("DarkmodeSafeBlack"))
                     
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                         Image(systemName: "text.bubble")
@@ -69,12 +69,12 @@ struct DetailCardView: View {
                     })
                     Spacer()
                     Button(action: {
-                        dataModel.cards[cardIndex].bookMarked.toggle()
+                        dataModel.getCard(withId: card.id)!.bookMarked ? dataModel.updateCard(withId: card.id, newBookMarked: false) :  dataModel.updateCard(withId: card.id, newBookMarked: true)
                     }, label: {
-                        dataModel.cards[cardIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
+                        dataModel.getCard(withId: card.id)!.bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
                     })
-                    .symbolEffect(.bounce, value: dataModel.cards[cardIndex].bookMarked)
-                    .foregroundStyle(dataModel.cards[cardIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
+                    .symbolEffect(.bounce, value: dataModel.getCard(withId: card.id)!.bookMarked)
+                    .foregroundStyle(dataModel.getCard(withId: card.id)!.bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
                 }
                 .foregroundStyle(Color("DarkmodeSafeBlack"))
                 .font(.title2)
@@ -104,22 +104,23 @@ struct DetailCardView: View {
                 .fontWeight(.ultraLight)
                 .padding()
                 
-                ForEach(dataModel.cards[cardIndex].cloths.indices) {clothIndex in
+                ForEach(card.clothsId, id: \.self) { (clothId: String) in
                     HStack {
                         NavigationLink {
-                            DetailClothView(cardIndex: cardIndex, clothIndex: clothIndex)
+                            DetailClothView(clothId: clothId)
                         } label: {
-                            ClothView(cloth: dataModel.cards[cardIndex].cloths[clothIndex])
+                            ClothView(cloth: dataModel.getCloth(withId: clothId)!)
                         }
                         .tint(.darkmodeSafeBlack)
                         
                         Button(action: {
-                            dataModel.cards[cardIndex].cloths[clothIndex].bookMarked.toggle()
+                            dataModel.getCloth(withId: clothId)!.bookMarked ?
+                            dataModel.updateCloth(withId: clothId, newBookMarked: false) :  dataModel.updateCloth(withId: clothId, newBookMarked: true)
                         }, label: {
-                            dataModel.cards[cardIndex].cloths[clothIndex].bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
+                            dataModel.getCloth(withId: clothId)!.bookMarked ? Image(systemName: "bookmark.fill") : Image(systemName: "bookmark")
                         })
-                        .symbolEffect(.bounce, value: dataModel.cards[cardIndex].cloths[clothIndex].bookMarked)
-                        .foregroundStyle(dataModel.cards[cardIndex].cloths[clothIndex].bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
+                        .symbolEffect(.bounce, value: dataModel.getCloth(withId: clothId)!.bookMarked)
+                        .foregroundStyle(dataModel.getCloth(withId: clothId)!.bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
                     }
                 }
                 .environmentObject(dataModel)
@@ -129,6 +130,6 @@ struct DetailCardView: View {
 }
 
 #Preview {
-    DetailCardView(cardIndex: 0)
-        .environmentObject(DataModel())
+    DetailCardView(cardId: "01_sbigstar0332")
+        .environmentObject(TestDataModel())
 }

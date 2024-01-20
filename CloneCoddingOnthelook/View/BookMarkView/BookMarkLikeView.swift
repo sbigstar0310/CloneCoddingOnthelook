@@ -1,22 +1,22 @@
 //
-//  BookMarkVIew.swift
+//  BookMarkLikeView.swift
 //  CloneCoddingOnthelook
 //
-//  Created by 성대규 on 12/24/23.
+//  Created by 성대규 on 1/20/24.
 //
 
 import SwiftUI
 
-struct BookMarkStyleView: View {
+struct BookMarkLikeView: View {
     @EnvironmentObject private var dataModel: TestDataModel
-    var gridItems = [GridItem(), GridItem()]
+    var gridItems = [GridItem(), GridItem(), GridItem()]
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
                     ForEach(dataModel.cards) { card in
-                        if card.bookMarked {
+                        if card.liked {
                             NavigationLink {
                                 DetailCardView(cardId: card.id)
                             } label: {
@@ -31,6 +31,6 @@ struct BookMarkStyleView: View {
 }
 
 #Preview {
-    BookMarkStyleView()
+    BookMarkLikeView()
         .environmentObject(TestDataModel())
 }

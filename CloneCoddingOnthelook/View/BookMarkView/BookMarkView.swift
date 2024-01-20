@@ -15,7 +15,7 @@ enum tapInfo : String, CaseIterable {
 }
 
 struct BookMarkView: View {
-    @EnvironmentObject private var dataModel: DataModel
+    @EnvironmentObject private var dataModel: TestDataModel
     @State private var selectedPicker: tapInfo = .style
     @Namespace private var animation
     
@@ -68,7 +68,7 @@ struct BookMarkView: View {
 
 struct SelectedBookMarkView : View {
     var selectedPicker : tapInfo
-    @EnvironmentObject private var dataModel: DataModel
+    @EnvironmentObject private var dataModel: TestDataModel
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -88,74 +88,7 @@ struct SelectedBookMarkView : View {
     }
 }
 
-struct BookMarkCreatorView: View {
-    @EnvironmentObject private var dataModel: DataModel
-    var gridItems = [GridItem(), GridItem(), GridItem()]
-    
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
-                ForEach(dataModel.profiles) { profile in
-                    if profile.isFollowing {
-                        BookMarkCreatorDetailView(profile: profile)
-                    }
-                }
-            }
-        }
-    }
-}
-
-struct BookMarkItemView: View {
-    @EnvironmentObject private var dataModel: DataModel
-    var body: some View {
-        
-        ForEach(dataModel.cards) {card in
-            HStack {
-                Image(card.profile.image)
-                    .resizable()
-                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                    .clipShape(Circle())
-                    .frame(width: 50, height: 50)
-                
-                Text(card.profile.name)
-                    
-                Spacer()
-            }
-            .padding(.top)
-            .padding(.leading)
-            
-            ForEach(card.cloths) {cloth in
-                BookMarkItemDetailView(item: cloth)
-                Divider()
-            }
-        }
-    }
-}
-
-struct BookMarkLikeView: View {
-    @EnvironmentObject private var dataModel: DataModel
-    var gridItems = [GridItem(), GridItem(), GridItem()]
-    
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
-                    ForEach(dataModel.cards.indices, id: \.self) { cardIndex in
-                        if dataModel.cards[cardIndex].liked {
-                            NavigationLink {
-                                DetailCardView(cardIndex: cardIndex)
-                            } label: {
-                                CardView(image: dataModel.cards[cardIndex].image)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 #Preview {
     BookMarkView()
-        .environmentObject(DataModel())
+        .environmentObject(TestDataModel())
 }

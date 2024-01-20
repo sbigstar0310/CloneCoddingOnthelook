@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct CloneCoddingOnthelookApp: App {
-    @StateObject private var dataModel = DataModel()
+    @StateObject private var dataModel = TestDataModel()
     
     var body: some Scene {
         WindowGroup {

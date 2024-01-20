@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var dataModel: DataModel
+    @EnvironmentObject private var dataModel: TestDataModel
     @State private var toggleMale = false
     @State private var toggleFemale = false
     @State private var heightLowerBound: Double = 145
@@ -17,20 +17,24 @@ struct HomeView: View {
     var gridItems = [GridItem(), GridItem()]
     
     func matchHeight(card: Card) -> Bool {
+        let profile = dataModel.getProfile(withId: card.profileId)!
+        
         return Int(heightLowerBound) <=
-        Int(card.profile.height)! && Int(card.profile.height)! <= Int(heightUpperBound)
+        Int(profile.height)! && Int(profile.height)! <= Int(heightUpperBound)
     }
     
     func matchGender(card: Card) -> Bool {
+        let profile = dataModel.getProfile(withId: card.profileId)!
+        
         if toggleMale && toggleFemale {
             // 남자 또는 여자일 경우 모든 카드 반환
             return true
         } else if toggleMale {
             // 남자일 경우 male인 카드만 반환
-            return  card.profile.gender == "male"
+            return  profile.gender == "male"
         } else if toggleFemale {
             // 여자일 경우 female인 카드만 반환
-            return card.profile.gender == "female"
+            return profile.gender == "female"
         } else {
             // 아무 버튼도 클릭되지 않았을 경우 모든 카드 반환
             return true
@@ -83,12 +87,12 @@ struct HomeView: View {
             
             ScrollView {
                 LazyVGrid(columns: gridItems, alignment: .center, spacing: 5) {
-                    ForEach(dataModel.cards.indices, id: \.self) { cardIndex in
-                        if match(card: dataModel.cards[cardIndex]) {
+                    ForEach(dataModel.cards) { card in
+                        if match(card: card) {
                             NavigationLink {
-                                DetailCardView(cardIndex: cardIndex)
+                                DetailCardView(cardId: card.id)
                             } label: {
-                                CardView(image: dataModel.cards[cardIndex].image)
+                                CardView(image: card.image)
                             }
                         }
                     }
@@ -102,5 +106,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(DataModel())
+        .environmentObject(TestDataModel())
 }

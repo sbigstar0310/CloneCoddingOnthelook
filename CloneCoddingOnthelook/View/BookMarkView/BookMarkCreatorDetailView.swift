@@ -16,11 +16,12 @@ struct BookMarkCreatorDetailView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .clipShape(Circle())
-                
+            Spacer()
             HStack {
                 Text(profile.name)
                     .fontWeight(.bold)
                     .padding(.trailing, 0)
+                    .lineLimit(1)
                 Image(systemName: "checkmark.seal.fill")
                     .foregroundStyle(.red)
                     .padding(.leading, 0)

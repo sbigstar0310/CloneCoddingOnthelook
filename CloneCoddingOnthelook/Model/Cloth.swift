@@ -8,7 +8,7 @@
 import Foundation
 
 struct Cloth: Identifiable, Hashable {
-    var id: UUID = .init()
+    var id: String = UUID().uuidString
     var name: String
     var brand: String
     var price: String

@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct BookMarkItemDetailView: View {
-    var item: Cloth = Cloth(name: "루키 언스트럭쳐 볼캡 LA다저스", brand: "MLB", price: "36000", image: "nycCap", size: "FREE", url: "https://www.musinsa.com/app/goods/1214109")
-    
+    @EnvironmentObject private var dataModel: TestDataModel
+
+    var clothId: String
+
     var body: some View {
+        let item = dataModel.getCloth(withId: clothId)!
+        
         HStack {
             Image(item.image)
                 .resizable()
@@ -31,19 +35,41 @@ struct BookMarkItemDetailView: View {
             Spacer()
             
             VStack(alignment: .trailing) {
-                Image(systemName: "bookmark.fill")
-                Spacer()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Text("구매하기")
+                Button(action: {
+                    dataModel.updateCloth(withId: item.id, newBookMarked: item.bookMarked ? false : true)
+                    }, label: {
+                        item.bookMarked ?
+                        Image(systemName: "bookmark.fill") :
+                        Image(systemName: "bookmark")
                 })
-                .buttonStyle(.borderedProminent)
+                .foregroundStyle(item.bookMarked ? .yellow : Color("DarkmodeSafeBlack"))
+
+                Spacer()
                 
+                NavigationLink {
+                    DetailClothView(clothId: item.id)
+                } label: {
+                    ZStack {
+                        Rectangle()
+                            .frame(width: 80, height: 40)
+                            .background(.black)
+                            .clipShape(.buttonBorder)
+                            .tint(.darkmodeSafeBlack)
+                        
+                        Text("구매하기")
+                            .fontWeight(.bold)
+                            .foregroundStyle(.darkmodeSafeBlack)
+                            .colorInvert()
+                    }
+                }
             }
+            .padding(.trailing)
         }
         .frame(height: 100)
     }
 }
 
 #Preview {
-    BookMarkItemDetailView()
+    BookMarkItemDetailView(clothId: "04")
+        .environmentObject(TestDataModel())
 }
