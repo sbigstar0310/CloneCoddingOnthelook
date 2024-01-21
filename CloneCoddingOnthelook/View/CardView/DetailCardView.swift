@@ -64,9 +64,9 @@ struct DetailCardView: View {
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                         Image(systemName: "text.bubble")
                     })
-                    Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                        Image(systemName: "square.and.arrow.up")
-                    })
+                    ShareLink(item: Image(card.image), preview: SharePreview("@\(profile.name)님의 스타일", image: Image(card.image))) {
+                        Label("", systemImage: "square.and.arrow.up")
+                    }
                     Spacer()
                     Button(action: {
                         dataModel.getCard(withId: card.id)!.bookMarked ? dataModel.updateCard(withId: card.id, newBookMarked: false) :  dataModel.updateCard(withId: card.id, newBookMarked: true)
@@ -130,6 +130,6 @@ struct DetailCardView: View {
 }
 
 #Preview {
-    DetailCardView(cardId: "01_sbigstar0332")
+    DetailCardView(cardId: "card01")
         .environmentObject(TestDataModel())
 }

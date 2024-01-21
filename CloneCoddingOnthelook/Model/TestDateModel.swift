@@ -28,11 +28,11 @@ class TestDataModel: ObservableObject {
             Cloth(id: "04", name: "남성 셰틀랜드 울 싱글 벤트 스포츠 재킷 - 네이비", brand: "THOM BROWNE", price: "1,081,000", image: "cloth01", size: "3", url: "https://www.musinsa.com/app/goods/2835447", bookMarked: true)
         ]
         self.cards = [
-            .init(profileId: "01_sbigstar0332", image: "card01", comment: "This is comment", clothsId: ["01", "02", "03"], bookMarked: false),
-            .init(profileId: "01_sbigstar0332", image: "card02", comment: "blabla", clothsId: ["04"], bookMarked: true, liked: true),
-            .init(profileId: "02_Jane", image: "card03", comment: "blabla", clothsId: [], liked: true),
-            .init(profileId: "03_Honel", image: "card04", comment: "blabla", clothsId: [], liked: true),
-            .init(profileId: "04_Alextina Gael", image: "card05", comment: "blabla", clothsId: [], liked: true)
+            .init(id: "card01", profileId: "01_sbigstar0332", image: "card01", comment: "This is comment", clothsId: ["01", "02", "03"], bookMarked: false),
+            .init(id: "card02", profileId: "01_sbigstar0332", image: "card02", comment: "blabla", clothsId: ["04"], bookMarked: true, liked: true),
+            .init(id: "card03", profileId: "02_Jane", image: "card03", comment: "blabla", clothsId: [], liked: true),
+            .init(id: "card04", profileId: "03_Honel", image: "card04", comment: "blabla", clothsId: [], liked: true),
+            .init(id: "card05", profileId: "04_Alextina Gael", image: "card05", comment: "blabla", clothsId: [], liked: true)
         ]
     }
     
