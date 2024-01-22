@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E0652E82B5EAF04003FCC7C /* ZoomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0652E72B5EAF04003FCC7C /* ZoomCardView.swift */; };
 		9E386BD02B5AD4C3001692AD /* TestDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E386BCF2B5AD4C3001692AD /* TestDateModel.swift */; };
 		9E386BD32B5B7F12001692AD /* FilterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C88C2B482EA8008B795F /* FilterDetailView.swift */; };
 		9E386BD42B5B83D4001692AD /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E946E7B2B53D5ED006752D9 /* BookMarkView.swift */; };
@@ -30,10 +31,10 @@
 		9E39C7D42B3B1917008B795F /* Cloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D32B3B1917008B795F /* Cloth.swift */; };
 		9E39C7D62B3B1AB8008B795F /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D52B3B1AB8008B795F /* ClothView.swift */; };
 		9E946E7A2B4FD2E8006752D9 /* DetailClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E946E792B4FD2E8006752D9 /* DetailClothView.swift */; };
-		9EDB50152B554D8F00CF0B42 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDB50142B554D8F00CF0B42 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E0652E72B5EAF04003FCC7C /* ZoomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomCardView.swift; sourceTree = "<group>"; };
 		9E386BCF2B5AD4C3001692AD /* TestDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDateModel.swift; sourceTree = "<group>"; };
 		9E386BDB2B5B9A3C001692AD /* BookMarkCreatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCreatorView.swift; sourceTree = "<group>"; };
 		9E386BDD2B5B9A70001692AD /* BookMarkLikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkLikeView.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		9E946E7B2B53D5ED006752D9 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
 		9ED9375D2B4A7764007C51E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EDB50122B554ACF00CF0B42 /* BookMarkCreatorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkCreatorDetailView.swift; sourceTree = "<group>"; };
-		9EDB50142B554D8F00CF0B42 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9EDB50192B58190800CF0B42 /* BookMarkItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkItemDetailView.swift; sourceTree = "<group>"; };
 		9EDB501B2B58CF3800CF0B42 /* BookMarkItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +118,6 @@
 				9E39C7CD2B3A947E008B795F /* Profile.swift */,
 				9E39C7D12B3B18A3008B795F /* Card.swift */,
 				9E39C7D32B3B1917008B795F /* Cloth.swift */,
-				9EDB50142B554D8F00CF0B42 /* DataModel.swift */,
 				9E386BCF2B5AD4C3001692AD /* TestDateModel.swift */,
 			);
 			path = Model;
@@ -164,6 +163,7 @@
 			children = (
 				9E39C7C92B3820CD008B795F /* CardView.swift */,
 				9E39C7C12B37F668008B795F /* DetailCardView.swift */,
+				9E0652E72B5EAF04003FCC7C /* ZoomCardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 				9E386BD02B5AD4C3001692AD /* TestDateModel.swift in Sources */,
 				9E39C7C22B37F668008B795F /* DetailCardView.swift in Sources */,
 				9E39C7B42B37F64B008B795F /* CloneCoddingOnthelookApp.swift in Sources */,
-				9EDB50152B554D8F00CF0B42 /* DataModel.swift in Sources */,
 				9E386BDA2B5B83D4001692AD /* BookMarkItemViewModel.swift in Sources */,
+				9E0652E82B5EAF04003FCC7C /* ZoomCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

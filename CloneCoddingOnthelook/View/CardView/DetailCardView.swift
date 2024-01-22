@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailCardView: View {
     @EnvironmentObject private var dataModel: TestDataModel
+    @State private var showHeart = false
     var cardId: String
     
     var body: some View {
@@ -48,10 +49,39 @@ struct DetailCardView: View {
                 .padding(.leading)
                 .padding(.trailing)
                 
-                Image(card.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                
+                ZStack {
+                    Image(card.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .onTapGesture(count: 2, perform: {
+                            dataModel.updateCard(withId: card.id, newLiked: true)
+                            withAnimation(.easeInOut) {
+                                showHeart = true
+                            }
+                        })
+                        .overlay(alignment: .topTrailing) {
+                            NavigationLink {
+                                ZoomCardView(image: card.image)
+                            } label: {
+                                Image(systemName: "square.arrowtriangle.4.outward")
+                                    .padding(.trailing, 10)
+                                    .padding(.top, 12)
+                                    .foregroundStyle(.white)
+                            }
+                        }
+                    if showHeart {
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .foregroundStyle(.red)
+                            .frame(width: 100, height: 100)
+                            .onAppear(perform: {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                                    showHeart = false
+                                })
+                            })
+                        
+                    }
+                }
                 HStack {
                     Button(action: {
                         dataModel.getCard(withId: card.id)!.liked ? dataModel.updateCard(withId: card.id, newLiked: false) :  dataModel.updateCard(withId: card.id, newLiked: true)
