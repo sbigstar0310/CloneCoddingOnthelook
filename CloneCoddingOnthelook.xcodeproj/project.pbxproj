@@ -30,6 +30,7 @@
 		9E39C7D22B3B18A3008B795F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D12B3B18A3008B795F /* Card.swift */; };
 		9E39C7D42B3B1917008B795F /* Cloth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D32B3B1917008B795F /* Cloth.swift */; };
 		9E39C7D62B3B1AB8008B795F /* ClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E39C7D52B3B1AB8008B795F /* ClothView.swift */; };
+		9E64CA822B5F5E1100758A66 /* testCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E64CA812B5F5E1100758A66 /* testCardImageView.swift */; };
 		9E946E7A2B4FD2E8006752D9 /* DetailClothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E946E792B4FD2E8006752D9 /* DetailClothView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		9E39C7D32B3B1917008B795F /* Cloth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloth.swift; sourceTree = "<group>"; };
 		9E39C7D52B3B1AB8008B795F /* ClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothView.swift; sourceTree = "<group>"; };
 		9E39C88C2B482EA8008B795F /* FilterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailView.swift; sourceTree = "<group>"; };
+		9E64CA812B5F5E1100758A66 /* testCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCardImageView.swift; sourceTree = "<group>"; };
 		9E946E792B4FD2E8006752D9 /* DetailClothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailClothView.swift; sourceTree = "<group>"; };
 		9E946E7B2B53D5ED006752D9 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
 		9ED9375D2B4A7764007C51E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				9E39C7C92B3820CD008B795F /* CardView.swift */,
 				9E39C7C12B37F668008B795F /* DetailCardView.swift */,
 				9E0652E72B5EAF04003FCC7C /* ZoomCardView.swift */,
+				9E64CA812B5F5E1100758A66 /* testCardImageView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E386BD62B5B83D4001692AD /* MyProfileView.swift in Sources */,
+				9E64CA822B5F5E1100758A66 /* testCardImageView.swift in Sources */,
 				9E386BD32B5B7F12001692AD /* FilterDetailView.swift in Sources */,
 				9E386BD52B5B83D4001692AD /* BookMarkStyleView.swift in Sources */,
 				9E386BE02B5B9AEB001692AD /* BookMarkItemView.swift in Sources */,

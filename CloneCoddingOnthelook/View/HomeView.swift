@@ -95,8 +95,8 @@ struct HomeView: View {
                                 CardView(image: card.image)
                             }
                         }
+                        
                     }
-                    .environmentObject(dataModel)
                 }
             }
         }

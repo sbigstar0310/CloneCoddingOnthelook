@@ -49,39 +49,48 @@ struct DetailCardView: View {
                 .padding(.leading)
                 .padding(.trailing)
                 
-                ZStack {
-                    Image(card.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .onTapGesture(count: 2, perform: {
-                            dataModel.updateCard(withId: card.id, newLiked: true)
-                            withAnimation(.easeInOut) {
-                                showHeart = true
-                            }
-                        })
-                        .overlay(alignment: .topTrailing) {
-                            NavigationLink {
-                                ZoomCardView(image: card.image)
-                            } label: {
-                                Image(systemName: "square.arrowtriangle.4.outward")
-                                    .padding(.trailing, 10)
-                                    .padding(.top, 12)
-                                    .foregroundStyle(.white)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 0) {
+                        ForEach(card.image, id:\.self) { image in
+                            ZStack {
+                                Image(image)
+                                    .resizable()
+                                    .overlay(alignment: .topTrailing, content: {
+                                        NavigationLink {
+                                            ZoomCardView(image: image)
+                                        } label: {
+                                            Image(systemName: "square.arrowtriangle.4.outward")
+                                                .padding()
+                                                .foregroundStyle(.white)
+                                        }
+                                    })
+                                    .scaledToFit()
+                                    .containerRelativeFrame(.horizontal, count: card.image.count, span: card.image.count, spacing: 0)
+                                    .onTapGesture(count: 2, perform: {
+                                        dataModel.updateCard(withId: card.id, newLiked: true)
+                                        withAnimation(.easeInOut) {
+                                            showHeart = true
+                                        }
+                                    })
+                                
+                                if showHeart {
+                                    Image(systemName: "heart.fill")
+                                        .resizable()
+                                        .foregroundStyle(.red)
+                                        .frame(width: 100, height: 100)
+                                        .onAppear(perform: {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                                                showHeart = false
+                                            })
+                                        })
+                                }
                             }
                         }
-                    if showHeart {
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .foregroundStyle(.red)
-                            .frame(width: 100, height: 100)
-                            .onAppear(perform: {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                                    showHeart = false
-                                })
-                            })
-                        
                     }
                 }
+                .scrollIndicators(.hidden)
+                .scrollTargetBehavior(.paging)
+                
                 HStack {
                     Button(action: {
                         dataModel.getCard(withId: card.id)!.liked ? dataModel.updateCard(withId: card.id, newLiked: false) :  dataModel.updateCard(withId: card.id, newLiked: true)
@@ -94,7 +103,7 @@ struct DetailCardView: View {
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                         Image(systemName: "text.bubble")
                     })
-                    ShareLink(item: Image(card.image), preview: SharePreview("@\(profile.name)님의 스타일", image: Image(card.image))) {
+                    ShareLink(item: Image(card.image[0]), preview: SharePreview("@\(profile.name)님의 스타일", image: Image(card.image[0]))) {
                         Label("", systemImage: "square.and.arrow.up")
                     }
                     Spacer()

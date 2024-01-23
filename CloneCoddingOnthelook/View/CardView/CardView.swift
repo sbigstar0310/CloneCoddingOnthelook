@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct CardView: View {
-    var image: String
+    var image: [String]
     
     var body: some View {
-        Image(image)
-            .resizable()
-            .aspectRatio(0.8, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-//            .aspectRatio(contentMode: .fit)
-//            .frame(width: 195, height: 240)
-            .clipShape(Rectangle())
+            ZStack(alignment: .topTrailing) {
+                Image(image[0])
+                    .resizable()
+                    .aspectRatio(0.8, contentMode: .fill)
+                if image.count > 1 {
+                    Image(systemName: "rectangle.fill.on.rectangle.fill")
+                        .foregroundStyle(.white)
+                        .padding(5)
+                }
+            }
     }
 }
 
 #Preview {
-    CardView(image: "card01")
+    CardView(image: ["card01", "card01-2"])
 }

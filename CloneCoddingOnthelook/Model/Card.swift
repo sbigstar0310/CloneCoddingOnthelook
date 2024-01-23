@@ -21,7 +21,7 @@ import Foundation
 struct Card: Identifiable {
     var id: String = UUID().uuidString
     var profileId: String
-    var image: String
+    var image: [String]
     var comment: String
     var clothsId: [String]
     var date: String = "2001.01.01"
