@@ -18,7 +18,7 @@ struct ContentView: View {
             BookMarkView()
                 .tabItem { Label( "북마크", systemImage: "bookmark")
                 }
-            MyProfileView(profile: Profile(name: "sbigstar0332", image: "profileImage", height:"173", weight: "73", job: "대학생"))
+            MyProfileView(profile: dataModel.profiles[0])
                 .tabItem { Label( "My", systemImage: "person")
                 }
         }

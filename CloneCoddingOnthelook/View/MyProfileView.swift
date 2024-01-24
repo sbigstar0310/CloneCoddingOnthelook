@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct MyProfileView: View {
+    @EnvironmentObject private var dataModel: TestDataModel
     var profile: Profile
     var gridItems = [GridItem(), GridItem()]
-    @EnvironmentObject private var dataModel: TestDataModel
     
     var body: some View {
+        var followingNumber = dataModel.profiles.filter({ $0.isFollowing && $0.id != profile.id }).count
+        
         NavigationStack {
             ScrollView {
                 HStack {
@@ -41,7 +43,7 @@ struct MyProfileView: View {
                             Text("•")
                                 .fontWeight(.ultraLight)
                             Text("팔로잉")
-                            Text("\(profile.following)")
+                            Text("\(followingNumber)")
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }
                     }

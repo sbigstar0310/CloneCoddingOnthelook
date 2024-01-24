@@ -18,7 +18,7 @@ class TestDataModel: ObservableObject {
             Profile(id: "02_Jane", name: "Jane", image: "profileImage", gender: "female", height: "161", weight: "61", job: "패션 스타일러", isFollowing: true),
             Profile(id: "03_Honel", name: "Honel", image: "profileImage", gender: "male", height: "188", weight: "78", job: "금융업 종사자", isFollowing: true),
             Profile(id: "04_Alextina Gael", name: "Alextina Gael", image: "profileImage", gender: "female", height: "168", weight: "58", job: "대학 교수", isFollowing: false),
-            Profile(id: "05_김광석",name: "김광석", image: "profileImage", gender: "male", height: "174", weight: "67", job: "카페 사장", isFollowing: true)
+            Profile(id: "05_김광석",name: "김광석", image: "profileImage", gender: "male", height: "174", weight: "67", job: "카페 사장", isFollowing: false)
         ]
         
         self.cloths = [
